@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {HashRouter as Router, Routes, Route} from 'react-router-dom';
+import Pathfinder from "./pathfinderComponents/pathfinder";
+import Home from "./homeComponents/home";
+import Graph from "./Graph/graph";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor() {
+        super();
+    }
+    componentDidMount() {
+        console.log(window.innerHeight,"  ",window.innerWidth);
+    }
+
+    render() {
+        return (
+            <Router basename='/'>
+                <Routes>
+                    <Route path='/pathfinder'  element={<Pathfinder />}/>
+                    <Route path='/graph' element={<Graph />}/>
+                    <Route path='/' element={<Home />}/>
+                </Routes>
+            </Router>
+        );
+    }
 }
 
 export default App;
